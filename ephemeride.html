@@ -709,12 +709,11 @@
       var apresdemain=new Date();
       apresdemain.setTime(date.getTime() + 48 * 3600 * 1000);
 
-      let joursemaine2 = semaine[demain.getDay() - 1];
+      let joursemaine2 = (demain.getDay()==0)?  semaine[demain.getDay()+6]  :semaine[demain.getDay()- 1] ;
       let moisactuel2 = moisannee[demain.getMonth()];
       let tomorrow = document.querySelector(".tomorrow");
       tomorrow.textContent = joursemaine2 + " " + demain.getDate() + " " + moisactuel2;
-
-      let joursemaine3 = semaine[apresdemain.getDay() - 1];
+      let joursemaine3 =(apresdemain.getDay()==0)?  semaine[apresdemain.getDay()+6]  :semaine[apresdemain.getDay()- 1] ;
       let moisactuel3 = moisannee[apresdemain.getMonth()];
       let aftertomorrow = document.querySelector(".aftertomorrow");
       aftertomorrow.textContent = joursemaine3 + " " + apresdemain.getDate() + " " + moisactuel3;

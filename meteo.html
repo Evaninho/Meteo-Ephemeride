@@ -21,275 +21,295 @@
         font-family: "AvenirLTStd-Medium";
         src: url("font/AvenirLTStd-Medium.otf") format("opentype");
       } */
-	.body{
-		position: relative;
-		min-height: 100vh;
-   		max-height: 100vh;
-		/* background-image: url(images/pexels-francesco-ungaro-281260.jpg); */
-	   	/* background-repeat: no-repeat;
-		background-size: cover; */
-		color: #fefeff;
-		font-family: Poppins;
-		margin: 0;
-    	padding: 2%;
-	}
+	  .body {
+	position: relative;
+	min-height: 100vh;
+	max-height: 100vh;
+	color: #fefeff;
+	font-family: Poppins, sans-serif;
+	margin: 0;
+	padding: 2%;
+	overflow-x: hidden;
+}
 
-	#page {
-    /* background-color: rgba(255, 255, 255, 0.238); */
-    box-shadow: 1px 1px 10px rgba(56, 56, 56, 0.4); 
-    border-radius: 1rem;
-    padding: 3%;
+#page {
+	box-shadow: 1px 1px 10px rgba(56, 56, 56, 0.4);
+	border-radius: 1rem;
+	padding: 3%;
 	height: 90%;
 	min-height: 92vh;
-	
-	}
+}
 
-  .villejour {
-    display: flex;
-    justify-content: space-between;
+.villejour {
+	display: flex;
+	justify-content: space-between;
 	align-items: center;
-  }
-  h4{
-    font-weight: 300;
-    font-size: 16;
-  }
+	flex-wrap: wrap;
+}
 
-  .titre{
+h1 {
+	font-size: clamp(40px, 6vw, 60px);
+	font-weight: 700;
+	text-align: center;
+	margin-bottom: 20px;
+	text-transform: uppercase;
+	font-family: Oswald, sans-serif;
+}
+
+h3 {
+	font-size: clamp(24px, 4vw, 30px);
+	font-weight: 400;
+	text-transform: uppercase;
+	text-align: center;
+	font-family: Oswald, sans-serif;
+}
+
+h4 {
+	font-weight: 300;
+	font-size: clamp(12px, 2vw, 16px);
+}
+
+.titre {
 	display: flex;
 	justify-content: center;
-  }
-	h1 {
-		font-size: 60px;
-		font-weight: 700;
-		text-align: center;
-		margin-bottom: 20px;
-		text-transform: uppercase;
-		font-family: Oswald,sans-serif;
-	}
+	align-items: center;
+}
 
-	h3 {
-		font-family: 'Oswald', sans-serif;
-      font-size: 30px;
-	  font-weight: 400;
-      text-transform: uppercase;
-	  text-align: center;
+.titre img {
+	position: absolute;
+	left: 8%;
+	top: 6%;
+	transform: translateX(-50%);
+	width: clamp(80px, 10vw, 130px);
+	height: auto;
+	z-index: 3;
+}
 
-	}
-	
-	.jour1>h3{
-		font-family: 'Oswald', sans-serif;
-      font-size: 36px;
-	  font-weight: 600;
-      text-transform: uppercase;
-	  text-align: start;
+.jour1 {
+	position: relative;
+	border-radius: 1rem;
+	overflow: hidden;
+	padding: clamp(1rem, 3vw, 2rem);
+	margin-bottom: 2rem;
+	background-color: rgba(241, 241, 241, 0.203);
+	box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.3);
+	width: 100%;
+	height: auto;
+	min-height: 30vh;
+}
 
-	}
+.jour1 > h3 {
+	font-size: clamp(26px, 4vw, 36px);
+	font-weight: 600;
+	text-transform: uppercase;
+	text-align: start;
+	font-family: Oswald, sans-serif;
+}
 
-	.jour1>h3{
-		font-family: 'Oswald', sans-serif;
-      font-size: 36px;
-	  font-weight: 600;
-      text-transform: uppercase;
-	}
-	
-	.jour1 {
-		position: relative;
-		border-radius: 1rem;
-		overflow: hidden;
-		padding: clamp(1rem, 3vw, 2rem);
-		margin-bottom: 2rem;
-		background-color: rgba(241, 241, 241, 0.203);
-		box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.3); 
-		width: 100%;
-		height: auto;
-		min-height: 30vh;
-	}
+.jour1 > h2 {
+	font-size: clamp(28px, 5vw, 45px);
+	font-weight: 500;
+	margin: auto;
+	text-align: center;
+}
 
-    /* .jour1 video,
-    .jour2 video,
-    .jour3 video {
-      position: absolute;
-      top: 0;
-      left: 0;
-      height: 100%;
-      width: 100%;
-      object-fit: cover;
-      opacity: 0.5;
-      z-index: 0;
-    } */
+.jour1 > p {
+	font-size: clamp(14px, 2vw, 22px);
+	font-weight: 500;
+}
 
-    .infojour1 {
-      position: relative;
-      z-index: 1;
-      display: flex;
-      justify-content: space-evenly;
-      align-items: center;
-	  margin: auto;
-	  flex-wrap: wrap;
-    }
-	.infojour0,.infojour2, .infojour3,.infojour4,.infojour5 {
-      position: relative;
-      z-index: 1;
-      align-items: center;
-	  margin: auto;
-	  text-align: center;
-    }
-	/* .video {
-		position: absolute;
-		top: 0;
-		left: 0;
-		object-fit: cover;
-		z-index: 1;
-		opacity: 0.9;
-	} */
+.jour1 h4 {
+	font-size: clamp(24px, 4vw, 50px);
+	font-weight: 500;
+}
 
-	.jour1>h2 {
-		font-size: 45px;
-		font-weight: 500;
-		margin: auto;
-		text-align: center;
-	}
+.jour1 p {
+	font-size: clamp(16px, 2vw, 22px);
+}
 
-	.jour1>p {
-		font-size: 18px;
-		font-weight: 500;
+.tempjour1 {
+	font-size: clamp(32px, 5vw, 60px);
+	align-items: center;
+}
+
+.iconetemp1 {
+	margin: auto;
+	text-align: center;
+	height: clamp(80px, 15vw, 150px);
+	width: clamp(80px, 15vw, 150px);
+	object-fit: contain;
+}
+
+#iconetemp0,
+#iconetemp2,
+#iconetemp3,
+#iconetemp4,
+#iconetemp5 {
+	margin: auto;
+	text-align: center;
+	height: clamp(50px, 6vw, 80px);
+	width: clamp(50px, 6vw, 80px);
+	object-fit: contain;
+}
+
+.infojour1 {
+	position: relative;
+	z-index: 1;
+	display: flex;
+	justify-content: space-evenly;
+	align-items: center;
+	margin: auto;
+	flex-wrap: wrap;
+}
+
+.infojour0,
+.infojour2,
+.infojour3,
+.infojour4,
+.infojour5 {
+	position: relative;
+	z-index: 1;
+	align-items: center;
+	margin: auto;
+	text-align: center;
+}
+
+.infosup {
+	margin: auto;
+	text-align: center;
+	width: clamp(80px, 10%, 120px);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+.infosup > .bi-caret-down-fill {
+	color: #2286ff;
+	font-size: clamp(24px, 4vw, 60px);
+}
+
+.infosup > .bi-caret-up-fill {
+	color: #d61427;
+	font-size: clamp(24px, 4vw, 60px);
+}
+
+.infosup > .bi-wind,
+.infosup > .bi-droplet-fill {
+	font-size: clamp(24px, 4vw, 60px);
+}
+
+/* Flèche température */
+.flechetemp {
+	display: flex;
+	align-items: center;
+	text-align: center;
+	margin-left: 18%;
+	gap: 5px;
+}
+
+.flechetemp > .bi-caret-down-fill,
+.flechetemp > .bi-caret-up-fill {
+	font-size: clamp(14px, 2vw, 20px);
+	padding-bottom: 8px;
+	margin-right: 5px;
+}
+
+.flechetemp > .bi-caret-down-fill {
+	color: #2286ff;
+}
+
+.flechetemp > .bi-caret-up-fill {
+	color: #d61427;
+}
+
+.joursuivant {
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	width: 85%;
+	padding: 0;
+	margin: auto;
+	box-sizing: border-box;
+}
+
+.joursuivant > i {
+	font-size: clamp(30px, 3vw, 40px);
+}
+
+.jour0,
+.jour2,
+.jour3,
+.jour4,
+.jour5 {
+	position: relative;
+	width: clamp(120px, 12vw, 180px);
+	height: auto;
+	min-height: 20vh;
+	overflow: hidden;
+	border-radius: 1em;
+	padding: 1.5rem;
+	background-color: rgba(255, 255, 255, 0.08);
+	box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.35);
+	margin: 2px;
+	text-align: center;
+}
+
+/* SECTION STYLING */
+section > * {
+	position: relative;
+	z-index: 2;
+	margin: auto;
+}
+
+/* Responsive breakpoints */
+@media screen and (max-width: 1024px) {
+	.villejour {
+		flex-direction: column;
+		align-items: center;
 	}
 
 	.joursuivant {
-		display: flex;
-    	justify-content: space-evenly;
-    	width: 100%;
-		height: 20%;
-		overflow: hidden;
-		margin: auto;
-		align-items: center;
-	}
-
-	.jour2,.jour3,.jour4,.jour5 {
-		position: relative;
-		width: 12%;
-		height: 40%;
-		min-height: 20vh;
-		overflow: hidden;
-		border-radius: 1em;
-		padding: 1.5rem;
-		background-color: rgba(255, 255, 255, 0);
-    	box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.35); 
-    	border-radius: 1rem;
-		margin:2px;
-		
-	}
-
-	.jour0 {
-		position: relative;
-		width: 12%;
-		height: 40%;
-		min-height: 20vh;
-		overflow: hidden;
-		border-radius: 1em;
-		padding: 1.5rem;
-		background-color: rgba(255, 255, 255, 0.181);
-    	box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.35); 
-    	border-radius: 1rem;
-		margin:2px;
-		
-	}
-	
-	section>* {
-		position: relative;
-		z-index: 2;
-		margin:auto;
-	}
-	
-	.joursuivant>i {
-		font-size: 40px;
-		
-	}
-
-
-
-
-	.jour1 h4{
-		font-size: 50px;
-		font-weight: 500;
-	}
-	.jour1 p{
-		font-size: 22px;
-	}
-
-
-	.tempjour1{
-	font-size: 60px;
-	align-items: center;
-	}
-	.infosup > .bi-caret-down-fill {
-			color: #2286ff;
-			font-size: 60px;
-	}
-
-	.infosup>.bi-caret-up-fill {
-		color: #d61427;
-		font-size: 60px;
-	}
-
-	.infosup>.bi-wind {
-		font-size: 60px;
-	}
-
-	.infosup>.bi-droplet-fill {
-		font-size: 60px;
-	}
-
-	.infosup{
-		margin: auto;
-		text-align: center;
-		width: 10%;
-		display: flex;
-		flex-direction: column;
-		align-items: center;
+		flex-wrap: wrap;
 		justify-content: center;
 	}
 
-	
+	.jour0,
+	.jour2,
+	.jour3,
+	.jour4,
+	.jour5 {
+		width: 40%;
+	}
+}
 
-	.iconetemp1 {
+@media screen and (max-width: 768px) {
+	.jour1 {
+		padding: 1rem;
+	}
+
+	.infojour1,
+	.joursuivant {
+		flex-direction: column;
+	}
+
+	.jour0,
+	.jour2,
+	.jour3,
+	.jour4,
+	.jour5 {
+		width: 80%;
+	}
+}
+
+@media screen and (min-width: 1920px) {
+	.jour1,
+	.joursuivant,
+	#page {
+		max-width: 1600px;
 		margin: auto;
-		text-align: center;
-		height: 150px;
-		width: 150px;
-		object-fit: contain;
 	}
-
-	#iconetemp0,
-	#iconetemp2,
-	#iconetemp3,#iconetemp4,#iconetemp5 {
-		margin: auto;
-		text-align: center;
-		height: 80px;
-		width: 80px;
-		object-fit: contain;
-	}
-
-	.flechetemp{
-		display: flex;
-		align-items: center;
-		text-align: center;
-		margin-left: 18%;
-	}
-
-	.flechetemp > .bi-caret-down-fill {
-			color: #2286ff;
-			font-size: 20px;
-			padding-bottom:8px ;
-			margin-right: 5px;
-	}
-
-	.flechetemp>.bi-caret-up-fill {
-		color: #d61427;
-		font-size: 20px;
-		padding-bottom:8px;
-		margin-right: 5px;
-	}
+}
 	</style>
 </head>
 <!----------------------- Script HTML ----------------------->
@@ -301,7 +321,7 @@
 			<h4 id="ville"></h4>
 			<div class="titre">
 				<h1>Météo</h1> 
-				<img src="images/logo_blanc.png" alt="logo" style=" position:absolute; top:4.75%; left:4.75%; height: 51px;width:130px;z-index:3;"/>
+				<img src="images/logo_blanc.png" alt="logo"/>
 			</div>	
 			<h4 class="today"></h4>
 		</div>
@@ -338,7 +358,7 @@
 		</section>
 
 		<div class="joursuivant">
-			<i class="bi bi-arrow-left-square-fill"></i>
+			<!-- <i class="bi bi-arrow-left-square-fill"></i> -->
 			<section class="jour0">
 				<h3 id=joursemaine0></h3>
 				<div class="infojour0">
@@ -379,7 +399,7 @@
 					<div class="flechetemp"><i class="bi bi-caret-up-fill"></i><h4 class="tempmax5"></h4></div>
 				</div>
 			</section>
-			<i class="bi bi-arrow-right-square-fill"></i>
+			<!-- <i class="bi bi-arrow-right-square-fill"></i> -->
 			
 		</div>
 	</div>
@@ -448,14 +468,14 @@
 			}
 				  let minmin;
 				  APIkey='8bc37b560c6722c5b6ccec664b16eb20';
-				  const ville1 = localStorage.getItem("ville");
-				  if (!ville1) {
-					alert("Aucune ville trouvée. Retour au formulaire.");
-					window.location.href = "form_meteo.html";
-					}
-				  console.log("Ville récupérée :", ville1);
-				  const ville=strUcFirst(ville1)
-
+				//   const ville1 = localStorage.getItem("ville");
+				//   if (!ville1) {
+				// 	alert("Aucune ville trouvée. Retour au formulaire.");
+				// 	window.location.href = "form_meteo.html";
+				// 	}
+				//   console.log("Ville récupérée :", ville1);
+				//   const ville=strUcFirst(ville1)
+					const ville='Vitry-sur-seine'
 				  document.querySelector("#ville").textContent=ville;
 				  document.querySelector("#villetitre").textContent="Météo "+ville;
 
