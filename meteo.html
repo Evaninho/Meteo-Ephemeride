@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title id="villetitre"></title>
+	<link rel="icon" id="meteoicon" href="">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous" />
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Oswald:wght@200..700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">	<style>
+	/* @font-face {
+        font-family: "AvenirLTStd-Black";
+
+        src: url("font/AvenirLTStd-Black.otf") format("opentype");
+      }
+
+      @font-face {
+        font-family: "AvenirLTStd-Medium";
+        src: url("font/AvenirLTStd-Medium.otf") format("opentype");
+      } */
+	.body{
+		position: relative;
+		min-height: 100vh;
+   		max-height: 100vh;
+		/* background-image: url(images/pexels-francesco-ungaro-281260.jpg); */
+	   	/* background-repeat: no-repeat;
+		background-size: cover; */
+		color: #fefeff;
+		font-family: Poppins;
+		margin: 0;
+    	padding: 2%;
+	}
+
+	#page {
+    /* background-color: rgba(255, 255, 255, 0.238); */
+    box-shadow: 1px 1px 10px rgba(56, 56, 56, 0.4); 
+    border-radius: 1rem;
+    padding: 3%;
+	height: 90%;
+	min-height: 92vh;
+	
+	}
+
+  .villejour {
+    display: flex;
+    justify-content: space-between;
+	align-items: center;
+  }
+  h4{
+    font-weight: 300;
+    font-size: 16;
+  }
+
+  .titre{
+	display: flex;
+	justify-content: center;
+  }
+	h1 {
+		font-size: 60px;
+		font-weight: 700;
+		text-align: center;
+		margin-bottom: 20px;
+		text-transform: uppercase;
+		font-family: Oswald,sans-serif;
+	}
+
+	h3 {
+		font-family: 'Oswald', sans-serif;
+      font-size: 30px;
+	  font-weight: 400;
+      text-transform: uppercase;
+	  text-align: center;
+
+	}
+	
+	.jour1>h3{
+		font-family: 'Oswald', sans-serif;
+      font-size: 36px;
+	  font-weight: 600;
+      text-transform: uppercase;
+	  text-align: start;
+
+	}
+
+	.jour1>h3{
+		font-family: 'Oswald', sans-serif;
+      font-size: 36px;
+	  font-weight: 600;
+      text-transform: uppercase;
+	}
+	
+	.jour1 {
+		position: relative;
+		border-radius: 1rem;
+		overflow: hidden;
+		padding: clamp(1rem, 3vw, 2rem);
+		margin-bottom: 2rem;
+		background-color: rgba(241, 241, 241, 0.203);
+		box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.3); 
+		width: 100%;
+		height: auto;
+		min-height: 30vh;
+	}
+
+    /* .jour1 video,
+    .jour2 video,
+    .jour3 video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+      opacity: 0.5;
+      z-index: 0;
+    } */
+
+    .infojour1 {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+	  margin: auto;
+	  flex-wrap: wrap;
+    }
+	.infojour0,.infojour2, .infojour3,.infojour4,.infojour5 {
+      position: relative;
+      z-index: 1;
+      align-items: center;
+	  margin: auto;
+	  text-align: center;
+    }
+	/* .video {
+		position: absolute;
+		top: 0;
+		left: 0;
+		object-fit: cover;
+		z-index: 1;
+		opacity: 0.9;
+	} */
+
+	.jour1>h2 {
+		font-size: 45px;
+		font-weight: 500;
+		margin: auto;
+		text-align: center;
+	}
+
+	.jour1>p {
+		font-size: 18px;
+		font-weight: 500;
+	}
+
+	.joursuivant {
+		display: flex;
+    	justify-content: space-evenly;
+    	width: 100%;
+		height: 20%;
+		overflow: hidden;
+		margin: auto;
+		align-items: center;
+	}
+
+	.jour2,.jour3,.jour4,.jour5 {
+		position: relative;
+		width: 12%;
+		height: 40%;
+		min-height: 20vh;
+		overflow: hidden;
+		border-radius: 1em;
+		padding: 1.5rem;
+		background-color: rgba(255, 255, 255, 0);
+    	box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.35); 
+    	border-radius: 1rem;
+		margin:2px;
+		
+	}
+
+	.jour0 {
+		position: relative;
+		width: 12%;
+		height: 40%;
+		min-height: 20vh;
+		overflow: hidden;
+		border-radius: 1em;
+		padding: 1.5rem;
+		background-color: rgba(255, 255, 255, 0.181);
+    	box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.35); 
+    	border-radius: 1rem;
+		margin:2px;
+		
+	}
+	
+	section>* {
+		position: relative;
+		z-index: 2;
+		margin:auto;
+	}
+	
+	.joursuivant>i {
+		font-size: 40px;
+		
+	}
+
+
+
+
+	.jour1 h4{
+		font-size: 50px;
+		font-weight: 500;
+	}
+	.jour1 p{
+		font-size: 22px;
+	}
+
+
+	.tempjour1{
+	font-size: 60px;
+	align-items: center;
+	}
+	.infosup > .bi-caret-down-fill {
+			color: #2286ff;
+			font-size: 60px;
+	}
+
+	.infosup>.bi-caret-up-fill {
+		color: #d61427;
+		font-size: 60px;
+	}
+
+	.infosup>.bi-wind {
+		font-size: 60px;
+	}
+
+	.infosup>.bi-droplet-fill {
+		font-size: 60px;
+	}
+
+	.infosup{
+		margin: auto;
+		text-align: center;
+		width: 10%;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+	}
+
+	
+
+	.iconetemp1 {
+		margin: auto;
+		text-align: center;
+		height: 150px;
+		width: 150px;
+		object-fit: contain;
+	}
+
+	#iconetemp0,
+	#iconetemp2,
+	#iconetemp3,#iconetemp4,#iconetemp5 {
+		margin: auto;
+		text-align: center;
+		height: 80px;
+		width: 80px;
+		object-fit: contain;
+	}
+
+	.flechetemp{
+		display: flex;
+		align-items: center;
+		text-align: center;
+		margin-left: 18%;
+	}
+
+	.flechetemp > .bi-caret-down-fill {
+			color: #2286ff;
+			font-size: 20px;
+			padding-bottom:8px ;
+			margin-right: 5px;
+	}
+
+	.flechetemp>.bi-caret-up-fill {
+		color: #d61427;
+		font-size: 20px;
+		padding-bottom:8px;
+		margin-right: 5px;
+	}
+	</style>
+</head>
+<!----------------------- Script HTML ----------------------->
+
+<body>
+	<div class="body">
+	<main id="page">
+		<div class="villejour">
+			<h4 id="ville"></h4>
+			<div class="titre">
+				<h1>Météo</h1> 
+				<img src="images/logo_blanc.png" alt="logo" style=" position:absolute; top:4.75%; left:4.75%; height: 51px;width:130px;z-index:3;"/>
+			</div>	
+			<h4 class="today"></h4>
+		</div>
+		
+	
+		<section class="jour1">
+			<h3>Aujourd'hui</h3>
+      	<div class="infojour1">
+		<article>
+		<div style="display: flex; justify-content: center; align-items: center;">
+			<h2 class="tempjour1"></h2>
+			<img class="iconetemp1" src="" alt="" />
+		</div>
+		<p class="descriptiontemp"></p>
+		<p class="ressenti"></p>
+		
+		</article>
+		<div class="infosup">
+			<h4 class="tempmin1"></h4><i class="bi bi-caret-down-fill"></i>
+			<p>min</p>
+		  </div>
+        <div class="infosup">
+          <h4 class="tempmax1"></h4><i class="bi bi-caret-up-fill"></i>
+          <p>max</p>
+        </div>
+        <div class="infosup">
+          <h4 class="vent1"></h4><i class="bi bi-wind"></i></i>
+          <p class="dir1"></p>
+        </div>
+		<div class="infosup">
+			<h4 class="humidite"></h4><i class="bi bi-droplet-fill"></i>
+			<p>% d'Humidité</p>
+		</div>
+		</section>
+
+		<div class="joursuivant">
+			<i class="bi bi-arrow-left-square-fill"></i>
+			<section class="jour0">
+				<h3 id=joursemaine0></h3>
+				<div class="infojour0">
+					<img id="iconetemp0" class="iconetemp0" src="" alt="" />
+					<div class="flechetemp"><i class="bi bi-caret-down-fill"></i><h4 class="tempmin0"></h4></div>
+					<div class="flechetemp"><i class="bi bi-caret-up-fill"></i><h4 class="tempmax0"></h4></div>
+				</div>
+			</section>
+			<section class="jour2">
+				<h3 id=joursemaine2></h3>
+				<div class="infojour2">		
+					<img class="iconetemp2" id="iconetemp2" src="" alt="" />
+					<div class="flechetemp"><i class="bi bi-caret-down-fill"></i><h4 class="tempmin2"></h4></div>
+					<div class="flechetemp"><i class="bi bi-caret-up-fill"></i><h4 class="tempmax2"></h4></div>
+				</div>
+			</section>
+			<section class="jour3">
+				<h3 id=joursemaine3></h3>
+				<div class="infojour3">
+					<img id="iconetemp3" class="iconetemp3" src="" alt="" />
+					<div class="flechetemp"><i class="bi bi-caret-down-fill"></i><h4 class="tempmin3"></h4></div>
+					<div class="flechetemp"><i class="bi bi-caret-up-fill"></i><h4 class="tempmax3"></h4></div>
+				</div>
+			</section>
+			<section class="jour4">
+				<h3 id=joursemaine4></h3>
+				<div class="infojour4">
+					<img id="iconetemp4" class="iconetemp4" src="" alt="" />
+					<div class="flechetemp"><i class="bi bi-caret-down-fill"></i><h4 class="tempmin4"></h4></div>
+					<div class="flechetemp"><i class="bi bi-caret-up-fill"></i><h4 class="tempmax4"></h4></div>
+				</div>
+			</section>
+			<section class="jour5">
+				<h3 id=joursemaine5></h3>
+				<div class="infojour5">
+					<img id="iconetemp5" class="iconetemp5" src="" alt="" />
+					<div class="flechetemp"><i class="bi bi-caret-down-fill"></i><h4 class="tempmin5"></h4></div>
+					<div class="flechetemp"><i class="bi bi-caret-up-fill"></i><h4 class="tempmax5"></h4></div>
+				</div>
+			</section>
+			<i class="bi bi-arrow-right-square-fill"></i>
+			
+		</div>
+	</div>
+		<!----------------------- Script JS ----------------------->
+		<script>
+
+			const weatherConditionIcons = {
+				"ciel dégagé": "images/13.png",
+				"ensoleillé": "images/10.png",
+				
+				"quelques nuages": "images/11.png",
+				"partiellement nuageux": "images/11.png",
+				"peu nuageux": "images/11.png",
+				
+				"nuageux": "images/12.png",
+				"couvert": "images/12.png",
+				
+				"légère pluie": "images/14.png",
+				"pluie modérée": "images/14.png",
+				"averses de pluie": "images/14.png",
+				
+				"orage et pluie": "images/17.png",
+				"orage avec éclaircies": "images/15.png",
+				
+				"neige légère": "images/16.png",
+				"neige modérée": "images/16.png",
+				"averses de neige": "images/16.png",
+				
+				"brouillard": "images/11.png",
+				"brume": "images/11.png",
+				
+				"pluie verglaçante": "images/nuage.gif",
+				"tempête de sable": "images/nuage.gif"
+			};
+			
+			const weatherConditionBackground = {
+				"ciel dégagé": "linear-gradient(to top,#37bce5, #21A4E5,#0C8DD9,#0675CE,#015FC3)",
+				"ensoleillé": "linear-gradient(to top,#37bce5, #21A4E5,#0C8DD9,#0675CE,#015FC3)",
+				
+				"quelques nuages": "linear-gradient(to top,#37bce5, #21A4E5,#0C8DD9,#0675CE,#015FC3)",
+				"partiellement nuageux": "linear-gradient(to top,#37bce5, #21A4E5,#0C8DD9,#0675CE,#015FC3)",
+				"peu nuageux": "linear-gradient(to top,#37bce5, #21A4E5,#0C8DD9,#0675CE,#015FC3)",
+
+				"nuageux": "linear-gradient(to top,#D3D7DC,#B7BCC2,#9BA1A9,#81868D,#6C7078 )",
+				"couvert": "linear-gradient(to top,#D3D7DC,#B7BCC2,#9BA1A9,#81868D,#6C7078 )",
+				
+				"légère pluie": "linear-gradient(to top,#4D6E89,#3F5C74,#324B60,#273B4C,#1C2C3A",
+				"pluie modérée": "linear-gradient(to top,#4D6E89,#3F5C74,#324B60,#273B4C,#1C2C3A)",
+				"averses de pluie": "linear-gradient(to top,#4D6E89,#3F5C74,#324B60,#273B4C,#1C2C3A)",
+				
+				"orage et pluie": "linear-gradient(to top,#4B4E57,#383B43,#2B2E36,#1F2128,#15171C)",
+				"orage avec éclaircies": "linear-gradient(to top,#4B4E57,#383B43,#2B2E36,#1F2128,#15171C)",
+				
+				"neige légère": "linear-gradient(to top,#4D6E89,#3F5C74,#324B60,#273B4C,#1C2C3A)",
+				"neige modérée": "linear-gradient(to top,#4D6E89,#3F5C74,#324B60,#273B4C,#1C2C3A)",
+				"averses de neige": "linear-gradient(to top,#4D6E89,#3F5C74,#324B60,#273B4C,#1C2C3A)",
+				
+				"brouillard": "linear-gradient(to top,#D3D7DC,#B7BCC2,#9BA1A9,#81868D,#6C7078 )",
+				"brume": "linear-gradient(to top,#D3D7DC,#B7BCC2,#9BA1A9,#81868D,#6C7078 )",
+				
+				"pluie verglaçante": "linear-gradient(to top,#4B4E57,#383B43,#2B2E36,#1F2128,#15171C)",
+				"tempête de sable": "linear-gradient(to top,#4B4E57,#383B43,#2B2E36,#1F2128,#15171C)"
+			};
+			function strUcFirst(a) {
+				return (a+'').charAt(0).toUpperCase() + (a+'').substr(1);
+			}
+				  let minmin;
+				  APIkey='8bc37b560c6722c5b6ccec664b16eb20';
+				  const ville1 = localStorage.getItem("ville");
+				  if (!ville1) {
+					alert("Aucune ville trouvée. Retour au formulaire.");
+					window.location.href = "form_meteo.html";
+					}
+				  console.log("Ville récupérée :", ville1);
+				  const ville=strUcFirst(ville1)
+
+				  document.querySelector("#ville").textContent=ville;
+				  document.querySelector("#villetitre").textContent="Météo "+ville;
+
+				  url=`https://api.openweathermap.org/data/2.5/weather?q=${ville}&appid=${APIkey}&units=metric&lang=fr`;
+				  fetch(url).then((response)=>
+				  response.json().then((data)=>{
+					console.log(data);
+					document.querySelector(".tempjour1").textContent=Math.round(data.main.temp) +"°C";
+					minmin=(Math.round(data.main.temp));
+					document.querySelector(".vent1").textContent=Math.round(data.wind.speed) +"KM/H";
+			
+					let dir1=data.wind.deg;
+					document.querySelector(".dir1").textContent = 
+					  (dir1 > 337.5 || dir1 <= 22.5) ? "Nord" :
+					  (dir1 > 22.5 && dir1 <= 67.5) ? "Nord-Est" :
+					  (dir1 > 67.5 && dir1 <= 112.5) ? "Est" :
+					  (dir1 > 112.5 && dir1 <= 157.5) ? "Sud-Est" :
+					  (dir1 > 157.5 && dir1 <= 202.5) ? "Sud" :
+					  (dir1 > 202.5 && dir1 <= 247.5) ? "Sud-Ouest" :
+					  (dir1 > 247.5 && dir1 <= 292.5) ? "Ouest" :
+					  (dir1 > 292.5 && dir1 <= 337.5) ? "Nord-Ouest" :
+					  "Direction inconnue";
+					
+			
+					  let weather = data.weather[0].description;
+					  let weatherIcon = weatherConditionIcons[weather];
+					  document.querySelector(".iconetemp1").src=weatherIcon;
+					  document.querySelector(".iconetemp0").src=weatherIcon;
+					  document.querySelector("#meteoicon").href=weatherIcon;
+
+					  document.querySelector(".descriptiontemp").textContent= strUcFirst(weather) ;
+						document.querySelector(".ressenti").textContent= "Ressenti : " + Math.round(data.main.feels_like )+"°C";
+						document.querySelector(".humidite").textContent= Math.round(data.main.humidity )+"%";
+					  let weatherBackground = weatherConditionBackground[weather];
+					  document.querySelector("body").style.background=weatherBackground;
+
+					
+				  })
+				);
+			
+				function grouperParJour(liste) {
+			  const jours = {};
+			
+			  liste.forEach(item => {
+				const date = item.dt_txt.split(" ")[0]; 
+				if (!jours[date]) jours[date] = [];
+				jours[date].push(item);
+			  });
+			
+			  return Object.values(jours); 
+			
+			}
+				  url=`https://api.openweathermap.org/data/2.5/forecast?q=${ville}&appid=${APIkey}&units=metric&lang=fr`;
+				  fetch(url).then((response)=>
+				  response.json().then((data)=>{
+					const jours = grouperParJour(data.list);
+				// ------------------
+				// JOUR 0
+				// ------------------
+				const jour0 = jours[0];
+				const midi0 = jour0.find(item => item.dt_txt.includes("12:00:00"));
+
+				const min0 = Math.min(...jour0.map(item => item.main.temp_min));
+				const max0 = Math.max(...jour0.map(item => item.main.temp_max));
+
+
+				(minmin<Math.round(min0))?document.querySelector(".tempmin0").textContent = minmin + "°C":document.querySelector(".tempmin0").textContent = Math.round(min0) + "°C";
+				
+				document.querySelector(".tempmax0").textContent = Math.round(max0) + "°C";
+				
+				
+				// ------------------
+				// JOUR 1
+				// ------------------
+				const jour1 = jours[0];
+
+				const min1 = Math.min(...jour1.map(item => item.main.temp_min));
+				const max1 = Math.max(...jour1.map(item => item.main.temp_max));
+
+				(minmin<Math.round(min1))?document.querySelector(".tempmin1").textContent = minmin + "°C":document.querySelector(".tempmin1").textContent = Math.round(min1) + "°C";
+
+				document.querySelector(".tempmax1").textContent = Math.round(max1) + "°C";
+
+
+				// ------------------
+				// JOUR 2 (demain)
+				// ------------------
+				const jour2 = jours[1];
+				const midi2 = jour2.find(item => item.dt_txt.includes("12:00:00"));
+			
+				const min2 = Math.min(...jour2.map(item => item.main.temp_min));
+				const max2 = Math.max(...jour2.map(item => item.main.temp_max));
+				document.querySelector(".tempmin2").textContent = Math.round(min2) + "°C";
+				document.querySelector(".tempmax2").textContent = Math.round(max2) + "°C";
+			
+				const weather2 = midi2.weather[0].description;
+				const weatherIcon2 = weatherConditionIcons[weather2];
+				document.querySelector("#iconetemp2").src = weatherIcon2;
+				// ------------------
+				// JOUR 3 (après-demain)
+				// ------------------
+				const jour3 = jours[2]; // après-demain
+				const midi3 = jour3.find(item => item.dt_txt.includes("12:00:00"));
+			
+				const min3 = Math.min(...jour3.map(item => item.main.temp_min));
+				const max3 = Math.max(...jour3.map(item => item.main.temp_max));
+			
+				document.querySelector(".tempmin3").textContent = Math.round(min3) + "°C";
+				document.querySelector(".tempmax3").textContent = Math.round(max3) + "°C";
+
+				const weather3 = midi3.weather[0].description;
+				const weatherIcon3 = weatherConditionIcons[weather3];
+				document.querySelector(".iconetemp3").src = weatherIcon3;
+
+				// ------------------
+				// JOUR 4
+				// ------------------
+				const jour4 = jours[3];
+				const midi4 = jour4.find(item => item.dt_txt.includes("12:00:00"));
+			
+				const min4 = Math.min(...jour4.map(item => item.main.temp_min));
+				const max4 = Math.max(...jour4.map(item => item.main.temp_max));
+			
+				document.querySelector(".tempmin4").textContent = Math.round(min4) + "°C";
+				document.querySelector(".tempmax4").textContent = Math.round(max4) + "°C";
+				
+				const weather4 = midi4.weather[0].description;
+				const weatherIcon4 = weatherConditionIcons[weather4];
+				document.querySelector(".iconetemp4").src = weatherIcon4;
+				// ------------------
+				// JOUR 5
+				// ------------------
+				const jour5 = jours[4];
+				const midi5 = jour5.find(item => item.dt_txt.includes("12:00:00"));
+
+				const min5 = Math.min(...jour5.map(item => item.main.temp_min));
+				const max5 = Math.max(...jour5.map(item => item.main.temp_max));
+
+				document.querySelector(".tempmin5").textContent = Math.round(min5) + "°C";
+				document.querySelector(".tempmax5").textContent = Math.round(max5) + "°C";
+
+				const weather5 = midi5.weather[0].description;
+				console.log(weather5);
+				const weatherIcon5 = weatherConditionIcons[weather5];
+				document.querySelector(".iconetemp5").src = weatherIcon5;
+			  }));    
+				  
+			
+			// DATES
+				  // const todayDate = new Date().toISOString().slice(0, 10);
+				  // console.log(todayDate);
+				let date = new Date();
+				  let annee = date.getFullYear();
+				  let mois = date.getMonth();
+				  let jour = date.getDate();
+				  let semaine = [
+					"Lundi",
+					"Mardi",
+					"Mercredi",
+					"Jeudi",
+					"Vendredi",
+					"Samedi",
+					"Dimanche",
+				  ];
+				  let moisannee = [
+					"Janvier",
+					"Février",
+					"Mars",
+					"Avril",
+					"Mai",
+					"Juin",
+					"Juillet",
+					"Août",
+					"Septembre",
+					"Octobre",
+					"Novembre",
+					"Décembre",
+				  ];
+			
+			
+				  let joursemaine = (date.getDay()==0)?  semaine[date.getDay()+6]  :semaine[date.getDay()- 1] ;
+				  
+
+				  let moisactuel = moisannee[mois];
+			
+			  		
+				  var demain=new Date();
+				  demain.setTime(date.getTime() + 24 * 3600 * 1000);
+			
+				  var apresdemain=new Date();
+				  apresdemain.setTime(date.getTime() + 48 * 3600 * 1000);
+
+				  var apresapresdemain=new Date();
+				  apresapresdemain.setTime(date.getTime() + 72 * 3600 * 1000);
+
+				  var apresapresapresdemain=new Date();
+				  apresapresapresdemain.setTime(date.getTime() + 96 * 3600 * 1000);
+
+
+				  let joursemaine2 = (demain.getDay()==0)?  semaine[demain.getDay()+6]  :semaine[demain.getDay()- 1] ;
+				  let joursemaine3 = (apresdemain.getDay()==0)?  semaine[apresdemain.getDay()+6]  :semaine[apresdemain.getDay()- 1] ;
+				  let joursemaine4 = (apresapresdemain.getDay()==0)?  semaine[apresapresdemain.getDay()+6]  :semaine[apresapresdemain.getDay()- 1] ;
+				  let joursemaine5 = (apresapresapresdemain.getDay()==0)?  semaine[apresapresapresdemain.getDay()+6]  :semaine[apresapresapresdemain.getDay()- 1] ;
+
+				  document.querySelector("#joursemaine0").textContent=joursemaine;
+				  document.querySelector("#joursemaine2").textContent=joursemaine2;
+				  document.querySelector("#joursemaine3").textContent=joursemaine3;
+				  document.querySelector("#joursemaine4").textContent=joursemaine4;
+				  document.querySelector("#joursemaine5").textContent=joursemaine5;
+
+
+
+
+				//   let moisactuel2 = moisannee[demain.getMonth()];
+				//   let moisactuel3 = moisannee[apresdemain.getMonth()];
+			
+				  let today = document.querySelector(".today");
+				  today.textContent = joursemaine + " " + jour + " " + moisactuel;
+				//   let tomorrow = document.querySelector(".tomorrow");
+				//   tomorrow.textContent = joursemaine2 + " " + demain.getDate() + " " + moisactuel2;
+				//   let aftertomorrow = document.querySelector(".aftertomorrow");
+				//   aftertomorrow.textContent = joursemaine3 + " " + apresdemain.getDate() + " " + moisactuel3;
+			
+				  
+			
+			
+				</script>
+</body>
+
+</html>
+
+<!-- GRADIENT POUR CIEL -->
+<!-- background: linear-gradient(to top,
+			#37bce5,  /* bas - bleu clair, frais */
+			#21A4E5,
+			#0C8DD9,
+			#0675CE,
+			#015FC3   /* haut - bleu intense */
+		);
+
+		background: linear-gradient(to top,
+		#D3D7DC,  /* bas - gris lumineux */
+		#B7BCC2,
+		#9BA1A9,
+		#81868D,
+		#6C7078   /* haut - gris bleuâtre */
+	  );
+
+	  background: linear-gradient(to top,
+	  #4B4E57,  /* bas - gris orageux */
+	  #383B43,
+	  #2B2E36,
+	  #1F2128,
+	  #15171C   /* haut - presque noir */
+	);
+	background: linear-gradient(to top,
+	#4D6E89,  
+	#3F5C74,
+	#324B60,
+	#273B4C,
+	#1C2C3A   /* haut - bleu nuit/grisâtre */
+  ); -->

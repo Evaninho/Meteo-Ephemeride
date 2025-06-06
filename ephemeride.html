@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Données de l'imprimante</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7"
+      crossorigin="anonymous"
+    />
+    <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+    rel="stylesheet"
+  />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+    
+    <!----------------------- Script CSS ----------------------->
+    <style>
+      /* @font-face {
+        font-family: "AvenirLTStd-Black";
+
+        src: url("font/AvenirLTStd-Black.otf") format("opentype");
+      }
+
+      @font-face {
+        font-family: "AvenirLTStd-Medium";
+        src: url("font/AvenirLTStd-Medium.otf") format("opentype");
+      } */
+
+      body,
+      html {
+        position: relative;
+        background-position: center;
+        min-height: 100vh;
+        margin: 0;
+        background-image: linear-gradient(to left, #1A1A1D, #03162b, #042449);
+        color: #f6f9fc;
+        font-family: Lato;
+        max-width: 100vw;
+        max-height: 100vh;
+        width: 100%;
+        height: 100%;
+        min-width: 100vw;
+        min-height: 100vh;
+        overflow: hidden;
+      }
+      #page {
+        padding:0% 2% 0% 2%;
+      }
+
+      h1 {
+        text-align: center;
+        font-size: 60px;
+        font-weight: 800;
+        margin-top:20px ;
+        margin-bottom: 1  0px;
+      }
+
+      h2 {
+        font-size: 41px;
+        font-weight: 500;
+
+      }
+      h3 {
+        font-size: 29px;
+        font-weight: 300;
+
+      }
+      h4 {
+        text-align: center;
+        font-size: 34px;
+        font-weight: 400;
+      }
+
+      p {
+        font-size: 25px;
+        font-weight: 500;
+        text-align: center;
+      }
+
+      .jour1 {
+        width: 100%;
+        height: 54vh;
+        display: flex;
+        border-bottom: 1px white solid;
+        margin-bottom: 15px;
+      }
+      .jour2 {
+        width: 100%;
+        height: 12vh;
+        display: flex;
+        justify-content:space-between ;
+        padding-bottom: 20px;
+        margin-bottom: 20px;
+      }
+      .jour3 {
+        width: 100%;
+        height: 12vh;
+        display: flex;
+        justify-content:space-between ;
+        border-top: 1px white solid;
+        padding-top: 15px;
+      }
+      .jour3,h2{
+        padding-top: 20px;
+      }
+      #textdroite   {
+        margin-top: auto;
+        width: 70%;
+      }
+
+      #textgauche,h3 {
+        text-align: start;
+        /* font-size:25px ; */
+      }
+      #textgauche {
+      width: 30%;      
+      }
+
+      #gauche {
+        width: 30%;
+      }
+
+      #gauche > h3,
+      h4 {
+        padding-bottom: 5px;
+        text-align: start;
+      }
+      #droite {
+        width: 70%;
+        height: fit-content;
+        max-height: 48%;
+        object-fit: contain;
+      }
+
+      .Saint1{
+        margin-bottom:20px ;
+      }
+      #droite > h2 {
+        text-align: start;
+
+      }
+
+      #infoMain {
+        display: grid;
+        grid: 150px 150px / 500px 500px;
+        gap: 22px;
+      }
+      article {
+        border-radius: 0.5em;
+        background-color: #f6f9fc;
+        color: #002856;
+        padding: 2%;
+      }
+
+      article > div {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        height: 70px;
+      }
+
+      article > div > h2 {
+        padding-bottom: 10px;
+
+      }
+
+      #leverSoleil {
+        border-left: 0.8em solid#d98e15;
+      }
+
+      #leverSoleil > div > i {
+        color: #d98e15;
+        font-size: 60px;
+        font-weight: 500;
+      }
+
+      #coucherSoleil {
+        border-left: 0.8em solid #b62230;
+      }
+
+      #coucherSoleil > div > i {
+        color: #b62230;
+        font-size: 60px;
+        font-weight: 500;
+      }
+
+      #midiSolaire {
+        border-left: 0.8em solid #198bea;
+      }
+
+      #midiSolaire > div > i {
+        color: #198bea;
+        font-size: 60px;
+        font-weight: 500;
+      }
+
+      #phaseLune {
+        border-left: 0.8em solid #17c9a7;
+      }
+
+      #phaseLune > img   {
+        height: 80px;
+        width:80px;
+        margin-left:42%;
+      }
+    </style>
+  </head>
+  <!----------------------- Script HTML ----------------------->
+  <body>
+    <h1>Ephéméride</h1>
+    <main id="page">
+      <div class="jour1">
+        <div id="gauche">
+          <h4>Aujourd'hui</h4>
+          <h3 class="today"></h3>
+        </div>
+        <section id="droite">
+          <h2 class="Saint1"></h2>
+          <div id="infoMain">
+            <article id="leverSoleil">
+              <p>Lever du soleil</p>
+              <div>
+                <i class="bi bi-sunrise-fill"></i>
+                <h2 class="heureLeverSoleil"></h2>
+              </div>
+            </article>
+            <article id="coucherSoleil">
+              <p>Coucher du soleil</p>
+              <div>
+                <i class="bi bi-sunset-fill"></i>
+                <h2 class="heureCoucherSoleil"></h2>
+              </div>
+            </article>
+            <article id="midiSolaire">
+              <p>Midi solaire</p>
+              <div>
+                <i class="bi bi-brightness-high-fill"></i>
+                <h2 class="heureMidiSolaire"></h2>
+              </div>
+            </article>
+            <article id="phaseLune">
+              <p>Phase Lunaire</p>
+              <img class="iconeLune"src="" alt="">
+            </article>
+          </div>
+        </section>
+      </div>
+      <div class="jour2">
+        <div id="textgauche">
+          <h4>Demain</h4>
+          <h3 class="tomorrow"></h3>
+        </div>
+        <div id="textdroite">
+          <h2 class="Saint2"></h2>
+        </div>
+      </div>
+      <div class="jour3">
+        <div id="textgauche">
+          <h4>Après-demain</h4>
+          <h3 class="aftertomorrow"></h3>
+        </div>
+        <div id="textdroite">
+          <h2 class="Saint3"></h2>
+        </div>
+      </div>
+    </main>
+    <!----------------------- Script JS ----------------------->
+    <script type="application/json" id="dataJSON">
+      {
+        "1": {
+          "1": " Jour de l'An",
+          "2": " Saint Basile",
+          "3": " Saint Geneviève",
+          "4": " Saint Odilon",
+          "5": " Saint Épiphanie",
+          "6": " Saint Melaine",
+          "7": " Saint Raymond",
+          "8": " Saint Lucien",
+          "9": " Saint Alix",
+          "10": " Saint Guillaume",
+          "11": " Saint Paulin",
+          "12": " Saint Tatiana",
+          "13": " Saint Yvette",
+          "14": " Saint Nina",
+          "15": " Saint Rémi",
+          "16": " Saint Marcel",
+          "17": " Saint Roseline",
+          "18": " Saint Prisca",
+          "19": " Saint Marius",
+          "20": " Saint Sébastien",
+          "21": " Saint Agnès",
+          "22": " Saint Vincent",
+          "23": " Saint Barnard",
+          "24": " Saint François de Sales",
+          "25": " Saint Paul",
+          "26": " Saint Paule",
+          "27": " Saint Angèle",
+          "28": " Saint Thomas d’Aquin",
+          "29": " Saint Gildas",
+          "30": " Saint Martine",
+          "31": " Saint Marcelle"
+        },
+        "2": {
+          "1": " Saint Ella",
+          "2": " Chandeleur",
+          "3": " Saint Blaise",
+          "4": " Saint Véronique",
+          "5": " Saint Agathe",
+          "6": " Saint Gaston",
+          "7": " Saint Eugénie",
+          "8": " Saint Jacqueline",
+          "9": " Saint Apolline",
+          "10": " Saint Arnaud",
+          "11": " Saint N.-D. de Lourdes",
+          "12": " Saint Félix",
+          "13": " Saint Béatrice",
+          "14": " Saint Valentin",
+          "15": " Saint Claude",
+          "16": " Saint Julienne",
+          "17": " Saint Alexis",
+          "18": " Saint Bernadette",
+          "19": " Saint Gabin",
+          "20": " Saint Aimée",
+          "21": " Saint Pierre Damien",
+          "22": " Saint Isabelle",
+          "23": " Saint Lazare",
+          "24": " Saint Modeste",
+          "25": " Saint Roméo",
+          "26": " Saint Nestor",
+          "27": " Saint Honorine",
+          "28": " Saint Romain"
+        },
+        "3": {
+          "1": " Saint Aubin",
+          "2": " Fête des grand-mères",
+          "3": " Saint Guénolé",
+          "4": " Mardi-Gras",
+          "5": " Carême",
+          "6": " Saint Colette",
+          "7": " Saint Félicité",
+          "8": " Saint Jean de Dieu",
+          "9": " Saint Françoise",
+          "10": " Saint Vivien",
+          "11": " Saint Rosine",
+          "12": " Saint Justine",
+          "13": " Saint Rodrigue",
+          "14": " Saint Mathilde",
+          "15": " Saint Louise",
+          "16": " Saint Bénédicte",
+          "17": " Saint Patrick / Patrice",
+          "18": " Saint Cyrille",
+          "19": " Saint Joseph",
+          "20": " Printemps",
+          "21": " Saint Clémence",
+          "22": " Saint Léa",
+          "23": " Saint Victorien",
+          "24": " Saint Cath. de Suède",
+          "25": " Annonciation",
+          "26": " Saint Larissa",
+          "27": " Mi-Carême",
+          "28": " Saint Gontran",
+          "29": " Saint Gwladys",
+          "30": " Saint Amédée",
+          "31": " Saint Benjamin"
+        },
+        "4": {
+          "1": " Saint Hugues",
+          "2": " Saint Sandrine",
+          "3": " Saint Richard",
+          "4": " Saint Isidore",
+          "5": " Saint Irène",
+          "6": " Saint Marcellin",
+          "7": " Saint J.-B. de la Salle",
+          "8": " Saint Julie",
+          "9": " Saint Gautier",
+          "10": " Saint Fulbert",
+          "11": " Saint Stanislas",
+          "12": " Saint Jules",
+          "13": " Saint Rameaux",
+          "14": " Saint Maxime",
+          "15": " Saint Paterne",
+          "16": " Saint Benoît-Joseph",
+          "17": " Saint Anicet",
+          "18": " Vendredi Saint",
+          "19": " Saint Emma",
+          "20": " Pâques",
+          "21": " Lundi de Pâques",
+          "22": " Saint Alexandre",
+          "23": " Saint Georges",
+          "24": " Saint Fidèle",
+          "25": " Saint Marc",
+          "26": " Saint Alida",
+          "27": " Saint Souv. Déportés",
+          "28": " Saint Valérie",
+          "29": " Saint Cath. de Sienne",
+          "30": " Saint Robert"
+        },
+        "5": {
+          "1": " Fête du travail",
+          "2": " Saint Boris",
+          "3": " Saint Philippe / Jacques",
+          "4": " Saint Sylvain",
+          "5": " Saint Judith",
+          "6": " Saint Prudence",
+          "7": " Saint Gisèle",
+          "8": " Victoire 1945",
+          "9": " Saint Pacôme",
+          "10": " Saint Solange",
+          "11": " Saint Estelle",
+          "12": " Saint Achille",
+          "13": " Saint Rolande",
+          "14": " Saint Matthias",
+          "15": " Saint Denise",
+          "16": " Saint Honoré",
+          "17": " Saint Pascal",
+          "18": " Saint Éric",
+          "19": " Saint Yves",
+          "20": " Saint Bernardin",
+          "21": " Saint Constantin",
+          "22": " Saint Émile",
+          "23": " Saint Didier",
+          "24": " Saint Donatien",
+          "25": " Saint Fête des Mères",
+          "26": " Saint Bérenger",
+          "27": " Saint Augustin de C.",
+          "28": " Saint Germain",
+          "29": " Ascension",
+          "30": " Saint Ferdinand",
+          "31": " Saint Perrine"
+        },
+        "6": {
+          "1": " Saint Justin",
+          "2": " Saint Blandine",
+          "3": " Saint Kévin",
+          "4": " Saint Clotilde",
+          "5": " Saint Igor",
+          "6": " Saint Norbert",
+          "7": " Saint Gilbert",
+          "8": " Saint Pentecôte",
+          "9": " Lundi de Pentecôte",
+          "10": " Saint Landry",
+          "11": " Saint Barnabé",
+          "12": " Saint Guy",
+          "13": " Saint Antoine de Padoue",
+          "14": " Saint Élisée",
+          "15": " Fête des Pères",
+          "16": " Saint J.-F. Régis",
+          "17": " Saint Hervé",
+          "18": " Saint Léonce",
+          "19": " Saint Romuald",
+          "20": " Saint Silvère",
+          "21": " Fête de la musique",
+          "22": " Saint Alban",
+          "23": " Saint Audrey",
+          "24": " Saint Jean-Baptiste",
+          "25": " Saint Éléonore / Prosper",
+          "26": " Saint Anthelme",
+          "27": " Saint Fernand",
+          "28": " Saint Irénée",
+          "29": " Saint Pierre / Paul",
+          "30": " Saint Martial"
+        },
+        "7": {
+          "1": " Saint Thierry",
+          "2": " Saint Martinien",
+          "3": " Saint Thomas",
+          "4": " Saint Florent",
+          "5": " Saint Antoine",
+          "6": " Saint Mariette",
+          "7": " Saint Raoul",
+          "8": " Saint Thibaut",
+          "9": " Saint Amandine",
+          "10": " Saint Ulrich",
+          "11": " Saint Benoît",
+          "12": " Saint Olivier",
+          "13": " Saint Henri / Joël",
+          "14": " Fête Nationale",
+          "15": " Saint Donald",
+          "16": " Saint N.-D. Mont-Carmel",
+          "17": " Saint Charlotte",
+          "18": " Saint Frédéric",
+          "19": " Saint Arsène",
+          "20": " Saint Marina",
+          "21": " Saint Victor",
+          "22": " Saint Marie-Madeleine",
+          "23": " Saint Brigitte",
+          "24": " Saint Christine",
+          "25": " Saint Jacques",
+          "26": " Saint Anne / Joachim",
+          "27": " Saint Nathalie",
+          "28": " Saint Samson",
+          "29": " Saint Marthe",
+          "30": " Saint Juliette",
+          "31": " Saint Ignace de Loyola"
+        },
+        "8": {
+          "1": " Saint Alphonse",
+          "2": " Saint Julien Eymard",
+          "3": " Saint Lydie",
+          "4": " Saint J.-M. Vianney",
+          "5": " Saint Abel",
+          "6": " Saint Transfiguration",
+          "7": " Saint Gaétan",
+          "8": " Saint Dominique",
+          "9": " Saint Amour",
+          "10": " Saint Laurent",
+          "11": " Saint Claire",
+          "12": " Saint Clarisse",
+          "13": " Saint Hippolyte",
+          "14": " Saint Évrard",
+          "15": " Assomption",
+          "16": " Saint Armel",
+          "17": " Saint Hyacinthe",
+          "18": " Saint Hélène",
+          "19": " Saint Jean-Eudes",
+          "20": " Saint Bernard",
+          "21": " Saint Christophe",
+          "22": " Saint Fabrice",
+          "23": " Saint Rose de Lima",
+          "24": " Saint Barthélemy",
+          "25": " Saint Louis",
+          "26": " Saint Natacha",
+          "27": " Saint Monique",
+          "28": " Saint Augustin",
+          "29": " Saint Sabine",
+          "30": " Saint Fiacre",
+          "31": " Saint Aristide"
+        },
+        "9": {
+          "1": " Saint Gilles",
+          "2": " Saint Ingrid",
+          "3": " Saint Grégoire",
+          "4": " Saint Rosalie",
+          "5": " Saint Raïssa",
+          "6": " Saint Bertrand",
+          "7": " Saint Reine",
+          "8": " Saint Nativité N.-D.",
+          "9": " Saint Alain",
+          "10": " Saint Inès",
+          "11": " Saint Adelphe",
+          "12": " Saint Apollinaire",
+          "13": " Saint Aimé",
+          "14": " Saint Lubin",
+          "15": " Saint Roland",
+          "16": " Saint Édith",
+          "17": " Saint Renaud",
+          "18": " Saint Nadège",
+          "19": " Saint Émilie",
+          "20": " Saint Davy",
+          "21": " Saint Matthieu",
+          "22": " Automne",
+          "23": " Saint Constant",
+          "24": " Saint Thècle",
+          "25": " Saint Hermann",
+          "26": " Saint Côme / Damien",
+          "27": " Saint Vincent de Paul",
+          "28": " Saint Venceslas",
+          "29": " Saint Michel",
+          "30": " Saint Jérôme"
+        },
+        "10": {
+          "1": " Saint Thé. de l'E.-Jésus",
+          "2": " Saint Léger",
+          "3": " Saint Gérard",
+          "4": " Saint François d’Assise",
+          "5": " Fête des grand-pères",
+          "6": " Saint Bruno",
+          "7": " Saint Serge",
+          "8": " Saint Pélagie",
+          "9": " Saint Denis",
+          "10": " Saint Ghislain",
+          "11": " Saint Firmin",
+          "12": " Saint Wilfried",
+          "13": " Saint Géraud",
+          "14": " Saint Juste",
+          "15": " Saint Thérèse d’Avila",
+          "16": " Saint Edwige",
+          "17": " Saint Baudouin",
+          "18": " Saint Luc",
+          "19": " Saint René",
+          "20": " Saint Adeline",
+          "21": " Saint Céline",
+          "22": " Saint Élodie",
+          "23": " Saint Jean de C.",
+          "24": " Saint Florentin",
+          "25": " Saint Crépin",
+          "26": " Saint Dimitri",
+          "27": " Saint Émeline",
+          "28": " Saint Simon / Jude",
+          "29": " Saint Narcisse",
+          "30": " Saint Bienvenue",
+          "31": " Halloween"
+        },
+        "11": {
+          "1": " Toussaint",
+          "2": " Saint Défunts",
+          "3": " Saint Hubert",
+          "4": " Saint Charles",
+          "5": " Saint Sylvie",
+          "6": " Saint Léonard / Bertille",
+          "7": " Saint Carine",
+          "8": " Saint Geoffroy",
+          "9": " Saint Théodore",
+          "10": " Saint Léon",
+          "11": " Armistice de 1918",
+          "12": " Saint Christian",
+          "13": " Saint Brice",
+          "14": " Saint Sidoine",
+          "15": " Saint Albert",
+          "16": " Saint Marguerite",
+          "17": " Saint Élisabeth",
+          "18": " Saint Aude",
+          "19": " Saint Tanguy",
+          "20": " Saint Edmond",
+          "21": " Saint Prés. de Marie",
+          "22": " Saint Cécile",
+          "23": " Saint Clément",
+          "24": " Saint Flora",
+          "25": " Saint Catherine",
+          "26": " Saint Delphine",
+          "27": " Saint Séverin",
+          "28": " Saint Jacques de la M.",
+          "29": " Saint Saturnin",
+          "30": " Saint André"
+        },
+        "12": {
+          "1": " Avent",
+          "2": " Saint Viviane",
+          "3": " Saint François-Xavier",
+          "4": " Saint Barbara",
+          "5": " Saint Gérald",
+          "6": " Saint Nicolas",
+          "7": " Saint Ambroise",
+          "8": " Saint Immac. Conception",
+          "9": " Saint Pierre Fourier",
+          "10": " Saint Romaric",
+          "11": " Saint Daniel",
+          "12": " Saint Jeanne F. C.",
+          "13": " Saint Lucie",
+          "14": " Saint Odile",
+          "15": " Saint Ninon",
+          "16": " Saint Alice",
+          "17": " Saint Judicaël / Gaël",
+          "18": " Saint Gatien",
+          "19": " Saint Urbain",
+          "20": " Saint Théophile",
+          "21": " Hiver",
+          "22": " Saint Françoise Xavière",
+          "23": " Saint Armand",
+          "24": " Saint Adèle",
+          "25": " Noël",
+          "26": " Saint Étienne",
+          "27": " Saint Jean",
+          "28": " Saint Sts Innocents",
+          "29": " Saint David",
+          "30": " Saint Roger",
+          "31": " Saint Sylvestre"
+        }
+      }
+    </script>
+    <script>
+      let saint1 = document.querySelector(".Saint1");
+      let saint2 = document.querySelector(".Saint2");
+      let saint3 = document.querySelector(".Saint3");
+      let saints = document.getElementById("dataJSON");
+
+      let data = JSON.parse(saints.textContent);
+
+      let date = new Date();
+      let annee = date.getFullYear();
+      let mois = date.getMonth() + 1;
+      let jour = date.getDate();
+      let semaine = [
+        "Lundi",
+        "Mardi",
+        "Mercredi",
+        "Jeudi",
+        "Vendredi",
+        "Samedi",
+        "Dimanche",
+      ];
+      let moisannee = [
+        "Janvier",
+        "Février",
+        "Mars",
+        "Avril",
+        "Mai",
+        "Juin",
+        "Juillet",
+        "Août",
+        "Septembre",
+        "Octobre",
+        "Novembre",
+        "Décembre",
+      ];
+      let joursemaine = semaine[date.getDay() - 1];
+      let moisactuel = moisannee[mois - 1];
+
+      let today = document.querySelector(".today");
+      today.textContent = joursemaine + " " + jour + " " + moisactuel;
+
+      var demain=new Date();
+      demain.setTime(date.getTime() + 24 * 3600 * 1000);
+      var apresdemain=new Date();
+      apresdemain.setTime(date.getTime() + 48 * 3600 * 1000);
+
+      let joursemaine2 = semaine[demain.getDay() - 1];
+      let moisactuel2 = moisannee[demain.getMonth()];
+      let tomorrow = document.querySelector(".tomorrow");
+      tomorrow.textContent = joursemaine2 + " " + demain.getDate() + " " + moisactuel2;
+
+      let joursemaine3 = semaine[apresdemain.getDay() - 1];
+      let moisactuel3 = moisannee[apresdemain.getMonth()];
+      let aftertomorrow = document.querySelector(".aftertomorrow");
+      aftertomorrow.textContent = joursemaine3 + " " + apresdemain.getDate() + " " + moisactuel3;
+
+      saint1.textContent = data[mois][jour];
+      data[mois][jour + 1] == undefined
+        ? ((saint2.textContent = data[mois + 1][1]),
+          (saint3.textContent = data[mois + 1][2]))
+        : ((saint2.textContent = data[mois][jour + 1]),
+          data[mois][jour + 2] == undefined
+            ? (saint3.textContent = data[mois + 1][1])
+            : (saint3.textContent = data[mois][jour + 2]));
+
+      
+      // let dateFull;
+      // (jour<10 && mois<10)?dateFull=annee+'-0'+mois+'-0'+jour:(jour<10 && mois>9)?dateFull=annee+'-'+mois+'-0'+jour:(jour>9 && mois<10)?dateFull=annee+'-0'+mois+'-'+jour:dateFull=annee+'-'+mois+'-'+jour;
+
+      url = `https://api.sunrise-sunset.org/json?lat=48.856614&lng=2.332222&date=today`;
+      fetch(url)
+        .then((response) => response.json())
+        .then((data) => {
+          function convertirEnHeureFrançaise(timeStr) {
+            let [time, AMPM] = timeStr.split(" ");
+            let [heure, minutes, _] = time.split(":");
+
+            heure = parseInt(heure);
+
+            if (AMPM === "PM" && heure !== 12) heure += 12;
+            if (AMPM === "AM" && heure === 12) heure = 0;
+
+            heure = (heure + 2) % 24;
+
+            return `${heure.toString().padStart(2, "0")}:${minutes}`;
+          }
+
+          let sunrise = convertirEnHeureFrançaise(data.results.sunrise);
+          let sunset = convertirEnHeureFrançaise(data.results.sunset);
+          let solarNoon = convertirEnHeureFrançaise(data.results.solar_noon);
+
+          document.querySelector(".heureLeverSoleil").textContent = sunrise;
+          document.querySelector(".heureCoucherSoleil").textContent = sunset;
+          document.querySelector(".heureMidiSolaire").textContent = solarNoon;
+        });
+
+      url2 = ` https://api.ipgeolocation.io/v2/astronomy?apiKey=10f84338d6064c568f1b654d98c2d7c0&lat=48.8566&long=2.3522`;
+
+      const moonPhaseIcons = {
+        NEW_MOON: "images/1.png",
+        WAXING_CRESCENT: "images/2.png",
+        FIRST_QUARTER: "images/3.png",
+        WAXING_GIBBOUS: "images/4.png",
+        FULL_MOON: "images/5.png",
+        WANING_GIBBOUS: "images/6.png",
+        LAST_QUARTER: "images/7.png",
+        WANING_CRESCENT: "images/8.png"
+      };
+      fetch(url2)
+        .then((response) => response.json())
+        .then((data) => {
+          console.log(data);
+          let moonPhase = data.astronomy.moon_phase;
+          let moonIcon = moonPhaseIcons[moonPhase];
+          document.querySelector(".iconeLune").src=moonIcon;
+        });
+    </script>
+  </body>
+</html>

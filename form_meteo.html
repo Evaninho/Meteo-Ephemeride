@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulaire Météo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
+</head>
+<style>
+    body{
+        color: black;
+        box-sizing: border-box;
+        width: 100%;
+        height: 100%;
+        min-height: 100vh;
+        min-width: 100vw;
+        position: relative;
+        overflow: hidden;
+        font-family: Oswald;
+        font-weight: 500;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        
+    }
+    
+    .bg{
+        filter: blur(1px);
+        background-image: url(images/Train.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        opacity: 87%;
+        z-index: -2;
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+    }
+    .bg2{
+        background-color: rgba(84, 84, 84, 0.187);
+        z-index: -1;
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+    }
+    .form{
+        z-index: 10;
+        margin: auto;
+        border: 1px solid rgba(137, 137, 137, 0.417);
+        border-radius: 1rem ;
+        box-shadow: 1px 1px 10px rgba(56, 56, 56, 0.4); 
+        width: 40%;
+        height: 30%;
+        background-color: rgba(247, 252, 255, 0.988);
+    }
+
+    h2{
+        font: 700;
+        font-size: 35px;
+        text-align: center;
+    }
+
+    #jourouvre{
+        background-color: rgba(247, 252, 255, 0.988);
+        font-size: 22px;
+        font-weight: 600;
+
+    }
+
+    label{
+        text-align: start;
+        font-size: 18px;
+        font-weight: 400;
+    }
+
+    button{
+        margin: auto;
+    }
+</style>
+<body>
+    <main>
+        <div class="bg"></div>
+        <div class="bg2"></div>
+        <form  class="form p-3">
+            <h2>Météo Formulaire</h2>
+            <div class="mb-3">
+            <label for="jourouvre" class="form-label">Ville</label>
+            <input type="text" value=""  name="meteoville" class="form-control" id="meteoville" placeholder="Entrée le nom d'une ville" required>
+            <span id="city-error" style="color:rgb(208, 24, 24);"></span>
+            </div>
+            <button type="submit" class="btn btn-primary">Valider</button>
+        </form>
+    </main>
+    <script>
+        const villeInput = document.querySelector("#meteoville");
+        const erreur = document.querySelector("#city-error");
+        const formulaire = document.querySelector("form");
+    
+        const APIkey = '8bc37b560c6722c5b6ccec664b16eb20';
+    
+        // Vérification en temps réel de l'input
+        villeInput.addEventListener('input', function () {
+            const ville = villeInput.value.trim();
+            if (ville === "") {
+                erreur.textContent = "Veuillez remplir ce champ !";
+            } else {
+                erreur.textContent = "";
+            }
+        });
+    
+        formulaire.addEventListener('submit', function (event) {
+            event.preventDefault();
+            const ville = villeInput.value.trim();
+    
+            if (ville === "") {
+                erreur.textContent = "Veuillez remplir ce champ !";
+                return;
+            }
+    
+            const url = `https://api.openweathermap.org/data/2.5/weather?q=${ville}&appid=${APIkey}&units=metric&lang=fr`;
+    
+            fetch(url)
+                .then((response) => {
+                    if (!response.ok) {
+                        throw new Error("Ville non trouvée");
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    console.log(data);
+                    localStorage.setItem("ville", ville);    
+                    window.location.href = "meteo.html";
+                })
+                .catch(error => {
+                    erreur.textContent = "Erreur : " + error.message;
+                });
+        });
+    </script>
+</body>
+</html>
