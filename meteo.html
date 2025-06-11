@@ -21,6 +21,8 @@
         font-family: "AvenirLTStd-Medium";
         src: url("font/AvenirLTStd-Medium.otf") format("opentype");
       } */
+
+	  
 	  .body {
 	position: relative;
 	min-height: 100vh;
@@ -95,7 +97,7 @@ h4 {
 	overflow: hidden;
 	padding: clamp(1rem, 3vw, 2rem);
 	margin-bottom: 2rem;
-	background-color: rgba(241, 241, 241, 0.3);
+	background-color: rgba(241, 241, 241, 0.343);
 	box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.3);
 	width: 100%;
 	height: auto;
@@ -241,7 +243,6 @@ h4 {
 	font-size: clamp(30px, 3vw, 40px);
 }
 
-.jour0,
 .jour2,
 .jour3,
 .jour4,
@@ -254,6 +255,20 @@ h4 {
 	border-radius: 1em;
 	padding: 1.5rem;
 	background-color: rgba(255, 255, 255, 0.154);
+	box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.35);
+	margin: 2px;
+	text-align: center;
+}
+
+.jour0{
+	position: relative;
+	width: clamp(120px, 12vw, 180px);
+	height: auto;
+	min-height: 20vh;
+	overflow: hidden;
+	border-radius: 1em;
+	padding: 1.5rem;
+	background-color: rgba(255, 255, 255, 0.338);
 	box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.35);
 	margin: 2px;
 	text-align: center;
@@ -302,11 +317,11 @@ section > * {
 	.jour3,
 	.jour4,
 	.jour5 {
-		width: 80%;
+		width: 90%;
 	}
 }
 
-@media screen and (min-width: 1920px) {
+@media screen and (min-width: 4000px) {
 	.jour1,
 	.joursuivant,
 	#page {
@@ -314,13 +329,33 @@ section > * {
 		margin: auto;
 	}
 }
+
+/* @media screen and (min-width: 2560px) {
+    .jour0, .jour2, .jour3, .jour4, .jour5 {
+        width: 15vw; 
+        font-size: 1.2vw;
+    }
+
+    .jour1 {
+        font-size: 1.5vw;
+    }
+
+    .infojour1 h2 {
+        font-size: 2vw;
+    }
+
+    body {
+        font-size: 1.2vw;
+    }
+} */
 	</style>
 </head>
 <!----------------------- Script HTML ----------------------->
 
 <body>
 	<div class="body">
-	<video id="videofond" autoplay loop src="" style="position:absolute; top:0;left: 0;  height:120vh; z-index:-2; opacity: 90%;"></video>	
+	<img id="videofond"src="" style="position:absolute; top:0;left: 0;  width:100%; height:100vh; object-fit: cover; z-index:-2; opacity: 90%;" alt="">
+	<!-- <video id="videofond" autoplay loop muted src="" style="position:absolute; top:0;left: 0;  height:120vh; z-index:-2; opacity: 90%;"></video>	 -->
 	<div style="position:absolute; top:0;left: 0; width: 100%; height:120vh; z-index:-1; opacity: 20%; background: rgb(85, 85, 85);"></div>
 	<main id="page">
 	<div class="villejour">
@@ -441,32 +476,32 @@ section > * {
 				"tempête de sable": "images/nuage.gif"
 			};
 			const weatherConditionBackground = {
-				"ciel dégagé": "video/cielbleu.mp4",
-				"ensoleillé": "video/cielbleu.mp4",
+				"ciel dégagé": "images/ciel.webp",
+				"ensoleillé": "images/ciel.webp",
 				
-				"quelques nuages": "video/ciel.mp4",
-				"partiellement nuageux": "video/ciel.mp4",
-				"peu nuageux": "video/ciel.mp4",
+				"quelques nuages": "images/nuage.jpg",
+				"partiellement nuageux": "images/nuage.jpg",
+				"peu nuageux": "images/nuage.jpg",
 
-				"nuageux": "video/nuage2.mp4",
-				"couvert": "video/nuageux.mp4",
+				"nuageux": "images/nuage.jpg",
+				"couvert": "images/nuageux.jpg",
 				
-				"légère pluie": "video/pluiie.mp4",
-				"pluie modérée": "video/pluiie.mp4",
-				"averses de pluie": "video/pluiie.mp4",
+				"légère pluie": "images/pluie.avif",
+				"pluie modérée": "images/pluie.jpg",
+				"averses de pluie": "images/pluie.jpg",
 				
-				"orage et pluie": "video/foudre.mp4",
-				"orage avec éclaircies": "video/foudre.mp4",
+				"orage et pluie": "images/orage.webp",
+				"orage avec éclaircies": "images/orage.webp",
 				
-				"neige légère": "video/neige.mp4",
-				"neige modérée": "video/neige.mp4",
-				"averses de neige": "video/neige.mp4",
+				"neige légère": "images/neige.jpg",
+				"neige modérée": "images/neige.jpg",
+				"averses de neige": "images/neige.jpg",
 				
-				"brouillard": "video/brume.mp4",
-				"brume": "video/brume.mp4",
+				"brouillard": "images/brouillard.jpg",
+				"brume": "images/brume.jpg",
 				
-				"pluie verglaçante": "video/neige.mp4",
-				"tempête de sable": "video/orange.mp4"
+				"pluie verglaçante": "images/panneau-verglas.webp",
+				"tempête de sable": "images/tempete.jpg"
 			};
 			// const weatherConditionBackground = {
 			// 	"ciel dégagé": "linear-gradient(to top,#37bce5, #21A4E5,#0C8DD9,#0675CE,#015FC3)",
