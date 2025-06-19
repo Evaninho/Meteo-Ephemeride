@@ -21,23 +21,29 @@
         font-family: "AvenirLTStd-Medium";
         src: url("font/AvenirLTStd-Medium.otf") format("opentype");
       } */
+
+	  
 	  .body {
 	position: relative;
 	min-height: 100vh;
 	max-height: 100vh;
-	color: #fefeff;
+	color: #ffffff;
 	font-family: Poppins, sans-serif;
 	margin: 0;
 	padding: 2%;
 	overflow-x: hidden;
+	overflow-y: hidden;
 }
 
 #page {
-	box-shadow: 1px 1px 10px rgba(56, 56, 56, 0.4);
+	box-shadow: 1px 1px 10px rgba(56, 56, 56, 0.405);
+	background-color: rgba(241, 241, 241, 0.063);
+
 	border-radius: 1rem;
 	padding: 3%;
 	height: 90%;
 	min-height: 92vh;
+	z-index: 2;
 }
 
 .villejour {
@@ -91,7 +97,7 @@ h4 {
 	overflow: hidden;
 	padding: clamp(1rem, 3vw, 2rem);
 	margin-bottom: 2rem;
-	background-color: rgba(241, 241, 241, 0.203);
+	background-color: rgba(241, 241, 241, 0.343);
 	box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.3);
 	width: 100%;
 	height: auto;
@@ -237,7 +243,6 @@ h4 {
 	font-size: clamp(30px, 3vw, 40px);
 }
 
-.jour0,
 .jour2,
 .jour3,
 .jour4,
@@ -249,7 +254,21 @@ h4 {
 	overflow: hidden;
 	border-radius: 1em;
 	padding: 1.5rem;
-	background-color: rgba(255, 255, 255, 0.08);
+	background-color: rgba(255, 255, 255, 0.154);
+	box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.35);
+	margin: 2px;
+	text-align: center;
+}
+
+.jour0{
+	position: relative;
+	width: clamp(120px, 12vw, 180px);
+	height: auto;
+	min-height: 20vh;
+	overflow: hidden;
+	border-radius: 1em;
+	padding: 1.5rem;
+	background-color: rgba(255, 255, 255, 0.338);
 	box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.35);
 	margin: 2px;
 	text-align: center;
@@ -298,11 +317,11 @@ section > * {
 	.jour3,
 	.jour4,
 	.jour5 {
-		width: 80%;
+		width: 90%;
 	}
 }
 
-@media screen and (min-width: 1920px) {
+@media screen and (min-width: 4000px) {
 	.jour1,
 	.joursuivant,
 	#page {
@@ -310,14 +329,36 @@ section > * {
 		margin: auto;
 	}
 }
+
+/* @media screen and (min-width: 2560px) {
+    .jour0, .jour2, .jour3, .jour4, .jour5 {
+        width: 15vw; 
+        font-size: 1.2vw;
+    }
+
+    .jour1 {
+        font-size: 1.5vw;
+    }
+
+    .infojour1 h2 {
+        font-size: 2vw;
+    }
+
+    body {
+        font-size: 1.2vw;
+    }
+} */
 	</style>
 </head>
 <!----------------------- Script HTML ----------------------->
 
 <body>
 	<div class="body">
+	<img id="videofond"src="" style="position:absolute; top:0;left: 0;  width:100%; height:100vh; object-fit: cover; z-index:-2; opacity: 90%;" alt="">
+	<!-- <video id="videofond" autoplay loop muted src="" style="position:absolute; top:0;left: 0;  height:120vh; z-index:-2; opacity: 90%;"></video>	 -->
+	<div style="position:absolute; top:0;left: 0; width: 100%; height:120vh; z-index:-1; opacity: 20%; background: rgb(85, 85, 85);"></div>
 	<main id="page">
-		<div class="villejour">
+	<div class="villejour">
 			<h4 id="ville"></h4>
 			<div class="titre">
 				<h1>Météo</h1> 
@@ -434,35 +475,62 @@ section > * {
 				"pluie verglaçante": "images/nuage.gif",
 				"tempête de sable": "images/nuage.gif"
 			};
-			
 			const weatherConditionBackground = {
-				"ciel dégagé": "linear-gradient(to top,#37bce5, #21A4E5,#0C8DD9,#0675CE,#015FC3)",
-				"ensoleillé": "linear-gradient(to top,#37bce5, #21A4E5,#0C8DD9,#0675CE,#015FC3)",
+				"ciel dégagé": "images/ciel.webp",
+				"ensoleillé": "images/ciel.webp",
 				
-				"quelques nuages": "linear-gradient(to top,#37bce5, #21A4E5,#0C8DD9,#0675CE,#015FC3)",
-				"partiellement nuageux": "linear-gradient(to top,#37bce5, #21A4E5,#0C8DD9,#0675CE,#015FC3)",
-				"peu nuageux": "linear-gradient(to top,#37bce5, #21A4E5,#0C8DD9,#0675CE,#015FC3)",
+				"quelques nuages": "images/nuage.jpg",
+				"partiellement nuageux": "images/nuage.jpg",
+				"peu nuageux": "images/nuage.jpg",
 
-				"nuageux": "linear-gradient(to top,#D3D7DC,#B7BCC2,#9BA1A9,#81868D,#6C7078 )",
-				"couvert": "linear-gradient(to top,#D3D7DC,#B7BCC2,#9BA1A9,#81868D,#6C7078 )",
+				"nuageux": "images/nuage.jpg",
+				"couvert": "images/nuageux.jpg",
 				
-				"légère pluie": "linear-gradient(to top,#4D6E89,#3F5C74,#324B60,#273B4C,#1C2C3A",
-				"pluie modérée": "linear-gradient(to top,#4D6E89,#3F5C74,#324B60,#273B4C,#1C2C3A)",
-				"averses de pluie": "linear-gradient(to top,#4D6E89,#3F5C74,#324B60,#273B4C,#1C2C3A)",
+				"légère pluie": "images/pluie.avif",
+				"pluie modérée": "images/pluie.jpg",
+				"averses de pluie": "images/pluie.jpg",
 				
-				"orage et pluie": "linear-gradient(to top,#4B4E57,#383B43,#2B2E36,#1F2128,#15171C)",
-				"orage avec éclaircies": "linear-gradient(to top,#4B4E57,#383B43,#2B2E36,#1F2128,#15171C)",
+				"orage et pluie": "images/orage.webp",
+				"orage avec éclaircies": "images/orage.webp",
 				
-				"neige légère": "linear-gradient(to top,#4D6E89,#3F5C74,#324B60,#273B4C,#1C2C3A)",
-				"neige modérée": "linear-gradient(to top,#4D6E89,#3F5C74,#324B60,#273B4C,#1C2C3A)",
-				"averses de neige": "linear-gradient(to top,#4D6E89,#3F5C74,#324B60,#273B4C,#1C2C3A)",
+				"neige légère": "images/neige.jpg",
+				"neige modérée": "images/neige.jpg",
+				"averses de neige": "images/neige.jpg",
 				
-				"brouillard": "linear-gradient(to top,#D3D7DC,#B7BCC2,#9BA1A9,#81868D,#6C7078 )",
-				"brume": "linear-gradient(to top,#D3D7DC,#B7BCC2,#9BA1A9,#81868D,#6C7078 )",
+				"brouillard": "images/brouillard.jpg",
+				"brume": "images/brume.jpg",
 				
-				"pluie verglaçante": "linear-gradient(to top,#4B4E57,#383B43,#2B2E36,#1F2128,#15171C)",
-				"tempête de sable": "linear-gradient(to top,#4B4E57,#383B43,#2B2E36,#1F2128,#15171C)"
+				"pluie verglaçante": "images/panneau-verglas.webp",
+				"tempête de sable": "images/tempete.jpg"
 			};
+			// const weatherConditionBackground = {
+			// 	"ciel dégagé": "linear-gradient(to top,#37bce5, #21A4E5,#0C8DD9,#0675CE,#015FC3)",
+			// 	"ensoleillé": "linear-gradient(to top,#37bce5, #21A4E5,#0C8DD9,#0675CE,#015FC3)",
+				
+			// 	"quelques nuages": "linear-gradient(to top,#37bce5, #21A4E5,#0C8DD9,#0675CE,#015FC3)",
+			// 	"partiellement nuageux": "linear-gradient(to top,#37bce5, #21A4E5,#0C8DD9,#0675CE,#015FC3)",
+			// 	"peu nuageux": "linear-gradient(to top,#37bce5, #21A4E5,#0C8DD9,#0675CE,#015FC3)",
+
+			// 	"nuageux": "linear-gradient(to top,#D3D7DC,#B7BCC2,#9BA1A9,#81868D,#6C7078 )",
+			// 	"couvert": "linear-gradient(to top,#D3D7DC,#B7BCC2,#9BA1A9,#81868D,#6C7078 )",
+				
+			// 	"légère pluie": "linear-gradient(to top,#4D6E89,#3F5C74,#324B60,#273B4C,#1C2C3A",
+			// 	"pluie modérée": "linear-gradient(to top,#4D6E89,#3F5C74,#324B60,#273B4C,#1C2C3A)",
+			// 	"averses de pluie": "linear-gradient(to top,#4D6E89,#3F5C74,#324B60,#273B4C,#1C2C3A)",
+				
+			// 	"orage et pluie": "linear-gradient(to top,#4B4E57,#383B43,#2B2E36,#1F2128,#15171C)",
+			// 	"orage avec éclaircies": "linear-gradient(to top,#4B4E57,#383B43,#2B2E36,#1F2128,#15171C)",
+				
+			// 	"neige légère": "linear-gradient(to top,#4D6E89,#3F5C74,#324B60,#273B4C,#1C2C3A)",
+			// 	"neige modérée": "linear-gradient(to top,#4D6E89,#3F5C74,#324B60,#273B4C,#1C2C3A)",
+			// 	"averses de neige": "linear-gradient(to top,#4D6E89,#3F5C74,#324B60,#273B4C,#1C2C3A)",
+				
+			// 	"brouillard": "linear-gradient(to top,#D3D7DC,#B7BCC2,#9BA1A9,#81868D,#6C7078 )",
+			// 	"brume": "linear-gradient(to top,#D3D7DC,#B7BCC2,#9BA1A9,#81868D,#6C7078 )",
+				
+			// 	"pluie verglaçante": "linear-gradient(to top,#4B4E57,#383B43,#2B2E36,#1F2128,#15171C)",
+			// 	"tempête de sable": "linear-gradient(to top,#4B4E57,#383B43,#2B2E36,#1F2128,#15171C)"
+			// };
 			function strUcFirst(a) {
 				return (a+'').charAt(0).toUpperCase() + (a+'').substr(1);
 			}
@@ -510,7 +578,7 @@ section > * {
 						document.querySelector(".ressenti").textContent= "Ressenti : " + Math.round(data.main.feels_like )+"°C";
 						document.querySelector(".humidite").textContent= Math.round(data.main.humidity )+"%";
 					  let weatherBackground = weatherConditionBackground[weather];
-					  document.querySelector("body").style.background=weatherBackground;
+					  document.querySelector("#videofond").src=weatherBackground;
 
 					
 				  })
